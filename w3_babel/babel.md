@@ -1,4 +1,4 @@
-### plugins (template method pattern)
+### plugins
 - parsing
 - transforming
 - printing
@@ -57,7 +57,7 @@ output(code, 'dist/index.js');
 ### patterns:
 - visitor pattern: adding new algorithm without changing data structures.
 - composition pattern.
-- template method pattern.
+- ~~template method pattern.~~
 - IoC: plugin is visitor which is used in `transform` of `@bable/core`.
 
 ### links
