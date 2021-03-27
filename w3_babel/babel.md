@@ -9,7 +9,7 @@
 
 ### presets
 - a set of plugins
-- composition pattern
+- composition pattern: wrong, babel will analyze preset and extract plugins from it.
 
 ### order
 - plugins > presets
@@ -51,12 +51,12 @@ output(code, 'dist/index.js');
   - babel modify AST by replacing in visitor, [i.e](https://github.com/babel/babel/blob/main/packages/babel-plugin-proposal-object-rest-spread/src/index.js#L465)
   - babel core generates code, [here](https://github.com/babel/babel/blob/main/packages/babel-core/src/transformation/index.js#L55)
 - how about the logic of preset ?
-  - TODO:
+  - [loadConfig](https://github.com/babel/babel/blob/main/packages/babel-core/src/config/full.js#L54)
 
 
 ### patterns:
 - visitor pattern: adding new algorithm without changing data structures.
-- composition pattern.
+- ~~composition pattern.~~
 - ~~template method pattern.~~
 - IoC: plugin is visitor which is used in `transform` of `@bable/core`.
 
