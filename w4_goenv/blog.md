@@ -58,5 +58,19 @@ main.go:4:3: no required module provides package github.com/ryoktgg/w4_goenv/stu
 - `GO111MODULE`を`off`にすると
   - goは自動的に`$GOPATH`のやり方に切り替えますから、`go env -W GOPATH=/you/project/path`でプロジェクトのpathを入れないと、golangはpackageを見つけられないです。
 - `GO111MODULE`を`on`にすると
-  - packageはremote packageの場合(例えば、`import github.com/google/uuid`、必ず`go.mod`に該当の`require` directiveがある、例えば：`require github.com/google/uuid`)、goは先に`go.mod`をみて、先に`$HOME/go/pkc/mod`下にダウンロードしてからimportする。`module` directive
+  - packageはremote packageの場合(例えば、`import github.com/google/uuid`、必ず`go.mod`に該当の`require` directiveがある、例えば：`require github.com/google/uuid`)、goは先に`go.mod`をみて、先に`$HOME/go/pkg/mod`下にダウンロードしてからimportする。(`go get package`も同じに先にpackageを`$HOME/go/pkg/mod`の下にdownloadする)
   - packageはlocal packageの場合(例えば、`import github.com/ryoktg/w4_goenv/stuff`、必ず`go.mod` fileに該当の`module` directiveがあります、例えば：`module github.com/ryoktg/w4_goenv`)、goは`go.mod`所属のfolder下でpackageを探します。
+
+### 比較：
+#### golang vs java
+| golang    | java                       | explanation |
+|-----------|----------------------------|-------------|
+| `$GOROOT` | `$JAVA_HOME`               |             |
+| `module`  | `group_id` + `artifact_id` |             |
+
+#### golang vs nodejs
+
+| golang               | nodejs            | explanation                                                                          |
+|----------------------|-------------------|--------------------------------------------------------------------------------------|
+| `go get package`     | `npm add package` |                                                                                      |
+| `go install package` | `npm add package` | golang will create a binary file, nodejs will create a soft link pointing to js file |
